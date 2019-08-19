@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.inner{
+			height: 150px;
+			background-color: darkcyan;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div class="inner" @click = "divHandler">
+			<input type="button" value="戳" @click.stop = "btnHandler">//.stop修饰符阻止冒泡事件
+		</div> -->
+
+		<!-- <a href="http://baidu.com" @click.prevent = "linkClick">百度一下</a>//阻止默认跳转 -->
+
+		<!-- <div class="inner" @click.capture = "divHandler">
+			<input type="button" value="戳" @click = "btnHandler"> 实现捕获触发机制(先触发div再触发btn)
+		</div>  -->
+
+		<!-- 使用.self实现只有点击当前元素时才会触发事件处理函数 -->
+		<!-- <div class="inner" @click.self = "divHandler">
+			<input type="button" value="戳" @click = "btnHandler">
+		</div> -->
+
+		<a href="http://baidu.com" @click.prevent.once = "linkClick">百度一下</a>
+	</div>
+<script src="lib/vue.js"></script>
+<script>
+	var vm = new Vue({
+		el:'#app',
+		data: {
+
+		},
+		methods: {
+			divHandler(){
+				console.log('触发inner')
+			},
+			btnHandler(){
+				console.log('触发btn')
+			},
+			linkClick(){
+				console.log('触发a标签')
+			}
+		}
+	})
+</script>
+</body>
+</html>

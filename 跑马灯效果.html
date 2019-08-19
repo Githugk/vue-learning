@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="button" value="开始" @click="vm_begin">
+		<input type="button" value="停止" @click="vm_stop">
+		<h4>{{ msg }}</h4>
+	</div>
+
+	<script src="lib/vue.js"></script>
+	<script>
+	var vm = new Vue ({
+		el:'#app',
+		data: {
+			msg: '跑马灯效果~~~~~~~',
+			intervalId:null
+		},
+		methods:{
+			vm_begin(){
+				if(this.intervalId != null) return;
+			this.intervalId = setInterval( () =>{
+				var start = this.msg.substring(0,1)
+				var end = this.msg.substring(1)
+				this.msg = end + start 
+				},400)
+			},
+			vm_stop(){
+				clearInterval(this.intervalId),
+				this.intervalId=null
+			}
+	}
+	})	
+	</script>
+</body>
+</html>

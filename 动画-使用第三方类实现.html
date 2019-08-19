@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/vue.js"></script>
+    <!-- 使用animate类库实现动画效果 -->
+    <link rel="stylesheet" href="./lib/animate.css">
+    <!-- 自定义两组样式来控制transition内部的元素实现动画 -->
+    <style>
+        /* 入场使用bounceIn  离场bounceOut */
+    
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input type="button" value="toggle" @click="flag=!flag">
+        <!-- 需求： 点击按钮，让 h3 显示，再点击，让 h3 隐藏 -->
+        <!-- transition时vue官方提供的 -->
+        <!-- <transition enter-active-class="bounceIn" leave-active-class="bounceOut">
+            <h3 v-if="flag" class="animated">这是一个H3</h3>
+        </transition> -->
+
+        <!-- :duration统一设置入场离场时动画时长 -->
+        <!-- <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="400">
+                <h3 v-if="flag" class="animated">这是一个H3</h3>
+        </transition> -->
+
+
+
+        <transition enter-active-class="bounceIn" leave-active-class="bounceOut" :duration="{enter:200,leave:400}">
+                <h3 v-if="flag" class="animated">这是一个H3</h3>
+        </transition>
+      <script>
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+          el: '#app',
+          data: {
+            flag: false
+          },
+          methods: {}
+        });
+      </script>
+    
+    </script>
+</body>
+</html>

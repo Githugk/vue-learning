@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.red {
+			color:red;
+		}
+
+		.thin{
+			font-weight: 200;
+		}
+
+		.iatlic{
+			font-style: italic;
+		}
+
+		.active{
+			letter-spacing: 0.5em;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app">
+		<h1 :class="['thin','red']">hello</h1>
+	</div>
+
+	<script src="lib/vue.js"></script>
+	<script>
+	var vm = new Vue ({
+		el:'#app',
+		data: {
+			msg: '跑马灯效果~~~~~~~',
+			intervalId:null
+		},
+		methods:{
+			vm_begin(){
+				if(this.intervalId != null) return;
+			this.intervalId = setInterval( () =>{
+				var start = this.msg.substring(0,1)
+				var end = this.msg.substring(1)
+				this.msg = end + start 
+				},400)
+			},
+			vm_stop(){
+				clearInterval(this.intervalId),
+				this.intervalId=null
+			}
+	}
+	})	
+	</script>
+</body>
+</html>
